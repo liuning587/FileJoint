@@ -8,7 +8,7 @@
  ******************************************************************************
  */
 #ifndef INI_H_
-#define INI_H_ 
+#define INI_H_
 
 #ifdef __cplusplus             /* Maintain C++ compatibility */
 extern "C" {
@@ -37,6 +37,7 @@ typedef struct
     int files;
     int blank;
     int islog;
+    char outfile[MAX_FILE_NAME_LEN];
     char logfile[MAX_FILE_NAME_LEN];
     file_t file[DEFAULT_MAX_FILE];
 } filejoint_ini_t;

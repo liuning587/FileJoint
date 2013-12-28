@@ -77,6 +77,7 @@ create_example_ini_file(void)
             "IsLog = 0\n"
             "#日志文件名\n"
             "LogFile = ./FileJoin.log\n"
+            "#输出文件名\n"
             "OutFile = ./FLASH.bin\n"
             "\n"
             "#文件1\n"
@@ -151,6 +152,16 @@ ini_get_info(filejoint_ini_t *pinfo)
         return -1;
     }
     strncpy(pinfo->logfile, pstr, sizeof(pinfo->logfile));
+
+    pstr = iniparser_getstring(ini, "cfg:OutFile", NULL);
+    if (pstr == NULL)
+    {
+        strncpy(pinfo->outfile, DEFAULT_DEST_FILE, sizeof(pinfo->outfile));
+    }
+    else
+    {
+        strncpy(pinfo->outfile, pstr, sizeof(pinfo->logfile));
+    }
 
     /* 扫描所以文件 */
     for (i = 0; i < pinfo->files; i++)

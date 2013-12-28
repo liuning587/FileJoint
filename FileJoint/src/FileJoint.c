@@ -23,7 +23,6 @@ int main(void) {
     char buf[BUF_SIZE];
     FILE* fdest = NULL;
     FILE* fcur = NULL;
-    const char *pdest_name = DEFAULT_DEST_FILE;
     int file_size = 0;
     int write_size = 0;
     int len = 0;
@@ -61,10 +60,10 @@ int main(void) {
     }
 
     /* 2. 创建目标文件 */
-    fdest = fopen(pdest_name, "w+b");
+    fdest = fopen(fji.outfile, "w+b");
     if (fdest == NULL)
     {
-        printf("创建文件%s失败!\n", pdest_name);
+        printf("创建文件%s失败!\n", fji.outfile);
         goto mainend;
     }
 
