@@ -134,10 +134,14 @@ ini_get_info(filejoint_ini_t *pinfo)
         return -1;
     }
     pinfo->blank = iniparser_getint(ini, "cfg:Blank", -1);
-    if ((pinfo->blank > 255) || (pinfo->blank < 0))
+    if (pinfo->blank < 0)
     {
         iniparser_freedict(ini);
         return -1;
+    }
+    if (pinfo->blank > 255)
+    {
+        pinfo->blank = 255;
     }
     pinfo->islog = iniparser_getint(ini, "cfg:IsLog", -1);
     if (pinfo->islog == -1)
